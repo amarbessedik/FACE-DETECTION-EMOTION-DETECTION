@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.amar.facemotion.MainActivity">
+
+
+    <ImageView
+        android:contentDescription="@string/photo_container_for_face_detection_purposes"
+        android:layout_width="252dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#081f7c"
+        android:id="@+id/faceImageView"
+        android:layout_above="@+id/faceBrowse"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:padding="1dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/photoicon"
+        android:layout_height="250dp" />
+
+    <Button
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goToEmotionActivity"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        style="@android:style/Widget.Button.Inset"
+        android:text="@string/emotions"
+        android:elevation="10dp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="@string/face_detection"
+        android:textColor="#E20808"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_alignEnd="@+id/faceImageView"
+        android:layout_alignStart="@+id/faceImageView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/faces"
+        android:id="@+id/faceBrowse"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:elevation="10dp"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:background="@drawable/camera_icon"
+        android:scaleType="fitXY"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/cameraButton"
+        style="@android:style/Widget.Button.Inset"
+        android:textStyle="normal|bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

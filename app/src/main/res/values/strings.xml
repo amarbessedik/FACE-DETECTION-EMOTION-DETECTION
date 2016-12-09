@@ -1,0 +1,10 @@
+<resources>
+    <string name="face_detection">FACE DETECTION</string>
+    <string name="emotions">EMOTIONS</string>
+    <string name="emotion_detection">EMOTION DETECTION</string>
+    <string name="goback">GOBACK</string>
+    <string name="browse">BROWSE</string>
+    <string name="faces">FACES</string>
+    <string name="photo_container_for_face_detection_purposes">Photo container for face detection purposes</string>
+    <string name="photo_container_for_emotions_detection_purposes">Photo container for emotions detection purposes</string>
+</resources>
