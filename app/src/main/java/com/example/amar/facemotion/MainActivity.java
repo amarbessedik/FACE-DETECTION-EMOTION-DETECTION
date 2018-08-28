@@ -1,3 +1,14 @@
+/*
+Amar Bessedik
+Class CSC588
+Fall 2016
+Final project: Detect Faces and Emotions in Crowdsourced Pictures
+Description: This project aims for detecting faces and emotions in crowdsourced pictures. To achieve the goal,
+             a user needs to provide a picture from their local smartphone directories or by taking a picture.
+             Once a picture is provided, and after some local processing, the picture will be sent into
+             Microsoft's Face API/Emotion API. If any faces are present, results of detected faces or detected emotions
+             will be sent back to the client for display.
+*/
 package com.example.amar.facemotion;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,15 +33,15 @@ import android.provider.MediaStore;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int PICK_IMAGE = 1;
+    private final int PICK_IMAGE = 1;// Pick up only one image at a time
     private static final int CAMERA_REQUEST = 1888;
-    private ProgressDialog detectionProgressDialog;
-    protected Button cameraButton;
-    protected Button faceBrowseButton;
-    protected Button emotionGoToButton;
-    private ImageView faceImageView;
-    private Bitmap bitmap;
-
+    private ProgressDialog detectionProgressDialog;// Show detection in progress
+    protected Button cameraButton; // Take a picture button
+    protected Button faceBrowseButton;// Browse a picture in local directories
+    protected Button emotionGoToButton;// Go to emotions screen
+    private ImageView faceImageView; //
+    private Bitmap bitmap;// An image will be transformed into a bitmap for processing
+    //Key to access Face API
     private FaceServiceClient faceServiceClient = new FaceServiceRestClient("3289657d188b4159b39df028555c5a19");
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -58,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EmotionActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -175,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(Color.RED);
+        paint.setColor(Color.BLUE);
         int stokeWidth = 2;
         paint.setStrokeWidth(stokeWidth);
         if (faces != null) {

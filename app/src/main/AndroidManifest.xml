@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Amar Bessedik
+    Class CSC588
+    Fall 2016
+    Final project: Detect Faces and Emotions in Crowdsourced Pictures
+    Description: This project aims for detecting faces and emotions in crowdsourced pictures. To achieve the goal,
+    a user needs to provide a picture from their local smartphone directories or by taking a picture.
+    Once a picture is provided, and after some local processing, the picture will be sent into
+    Microsoft's Face API/Emotion API. If any faces are present, results of detected faces or detected emotions
+    will be sent back to the client for display.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.amar.facemotion">
 

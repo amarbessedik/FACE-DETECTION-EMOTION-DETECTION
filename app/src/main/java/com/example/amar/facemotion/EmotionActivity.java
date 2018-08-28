@@ -1,5 +1,15 @@
+/*
+Amar Bessedik
+Class CSC588
+Fall 2016
+Final project: Detect Faces and Emotions in Crowdsourced Pictures
+Description: This project aims for detecting faces and emotions in crowdsourced pictures. To achieve the goal,
+             a user needs to provide a picture from their local smartphone directories or by taking a picture.
+             Once a picture is provided, and after some local processing, the picture will be sent into
+             Microsoft's Face API/Emotion API. If any faces are present, results of detected faces or detected emotions
+             will be sent back to the client for display.
+*/
 package com.example.amar.facemotion;
-
 import java.io.*;
 import android.app.*;
 import android.content.*;
@@ -22,23 +32,22 @@ import java.util.List;
 import java.util.Locale;
 import android.graphics.Bitmap;
 
-
 /**
  * Created by Amar on 10/25/2016.
  */
 
 public class EmotionActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1200;
-    private final int PICK_IMAGE = 1;
-    protected Bitmap bitmap;
-    protected Button browsePhotoButton;
-    protected Button takePictureButton;
-    protected Button goBackButton;
-    private ImageView emotionImageView;
-    private TextView resultsTextView;
-    private ProgressDialog emotionDetectionProgressDialog;
-    protected List<RecognizeResult> result = null;
-
+    private final int PICK_IMAGE = 1;//Only one image is picked at a time
+    protected Bitmap bitmap;// A copy of an image will be converted into a bitmap for processing
+    protected Button browsePhotoButton;// Browse for pictures in local directories
+    protected Button takePictureButton;// Take a picture button
+    protected Button goBackButton; // Go back to face detection screen button
+    private ImageView emotionImageView; // Container to display the loaded image
+    private TextView resultsTextView; // For  emotions results display
+    private ProgressDialog emotionDetectionProgressDialog; // Show detection progress
+    protected List<RecognizeResult> result = null; // List of scores and positions of faces in a picture
+    //Key to access Emotion API
     private EmotionServiceClient emotionServiceClient = new EmotionServiceRestClient("dad2de94aee4433d82c6b0a794e3c9c4");
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -74,7 +83,7 @@ public class EmotionActivity extends AppCompatActivity {
         //Show progress in detection
         emotionDetectionProgressDialog = new ProgressDialog(this);
 
-        resultsTextView = (TextView)findViewById(R.id.textView);
+        resultsTextView = (TextView)findViewById(R.id.resultsTextView);
         resultsTextView.setMovementMethod(new ScrollingMovementMethod());
 
         this.emotionImageView = (ImageView)this.findViewById(R.id.emotionImageView);
@@ -193,8 +202,10 @@ public class EmotionActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<RecognizeResult> faces) {
             //For grammatical use: if 1 face use "IS" otherwise use "ARE"
+            //Example: 1 face is detected ; 2 faces are detected
             String verb = "ARE";
             //For grammatical use: If more than 1 face use the plural "S" otherwise omit the "S"
+            //Example: 1 face ; 2 face(s)
             String singularOrPlural = "S";
             if(faces.size() == 1){
                 verb = "IS";
@@ -203,9 +214,10 @@ public class EmotionActivity extends AppCompatActivity {
 
             int faceNumber = 0;
             if(faces.size() > 0) {
+                String[] EMOTIONS = {"ANGER", "CONTEMPT", "DISGUST", "FEAR", "HAPPINESS", "NEUTRAL", "SADNESS", "SURPRISE"};
+
                 resultsTextView.append("\tTHERE "+verb+" "+faces.size()+" DETECTED FACE"+singularOrPlural+":\n\n");
                 for (RecognizeResult face : faces) {
-
                     double[] SCORES = {face.scores.anger, face.scores.contempt,
                                        face.scores.disgust, face.scores.fear,
                                        face.scores.happiness, face.scores.neutral,
@@ -215,8 +227,6 @@ public class EmotionActivity extends AppCompatActivity {
                                        face.faceRectangle.top,
                                        face.faceRectangle.width,
                                        face.faceRectangle.height};
-
-                    String[] EMOTIONS = {"ANGER", "CONTEMPT", "DISGUST", "FEAR", "HAPPINESS", "NEUTRAL", "SADNESS", "SURPRISE"};
 
                     //Increment the number of faces by 1 each time
                     faceNumber++;
